@@ -1,3 +1,4 @@
+import dominio.FormaPagamento;        
 import dominio.Cliente;
 
 public class App {
@@ -8,6 +9,8 @@ public class App {
         System.out.println(cliente.cpf());
         System.out.println(cliente.cep());
        
+        FormaPagamento formaPagamento = new FormaPagamento("Debito");
+
         System.out.println("Hello, World!");
     }    
 }
