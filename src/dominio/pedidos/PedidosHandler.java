@@ -1,33 +1,27 @@
 package dominio.pedidos;
 
-import java.util.List;
+import java.util.Optional;
 
 import dominio.Vendedor;
+import dominio.comum.Erro;
 
 public class PedidosHandler {
 
-    List<Vendedor> vendedores = List.of(new Vendedor("Vendedor 1"));
+    private IPedidosRepository pedidosRepository;
 
-    public void CriarPedido(PedidoInput input) {
-
-        Vendedor vendedor = this.vendedores.get(0);
-        if(vendedor == null){
-            // Erro
-        }
-        
-        // Pedido pedido = new Pedido(input.vendedorId);
-
+    public PedidosHandler(IPedidosRepository pedidosRepository) {
+        this.pedidosRepository = pedidosRepository;
     }
-}
 
-class PedidoInput {
-    Number vendedorId;
-    Number clienteId;
-    Number formaDepagamentoId;
-    ItemDoPedidoInput[] itens;
-}
+    public Optional<Erro> Criar(PedidoInput input) {
 
-class ItemDoPedidoInput {
-    Number quantidade;
-    Number pedidoId;
+        Optional<Vendedor> vendedor = this.pedidosRepository.BuscarVendedor(input.vendedorId);
+        if (vendedor.isEmpty())
+            return Optional.of(new Erro("vendedor_nao_encontrado", "Vendedor não encontrado."));
+
+        Pedido pedido = new Pedido();
+        pedidosRepository.Criar(pedido);
+
+        return Optional.empty();
+    }
 }

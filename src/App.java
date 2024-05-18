@@ -1,16 +1,13 @@
-import dominio.FormaPagamento;        
-import dominio.Cliente;
+import dominio.pedidos.PedidoInput;
+import dominio.pedidos.PedidosHandler;
+import infraestrutura.pedidos.PedidosRepository;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Cliente cliente  = new Cliente("Leonardo", "46810338802", "13835000");
-        System.out.println(cliente.nome());
-        System.out.println(cliente.cpf());
-        System.out.println(cliente.cep());
-       
-        FormaPagamento formaPagamento = new FormaPagamento("Debito");
-
-        System.out.println("Hello, World!");
-    }    
+        PedidosRepository pedidosRepository = new PedidosRepository();
+        PedidoInput input = new PedidoInput();
+        PedidosHandler pedidosHandler = new PedidosHandler(pedidosRepository);
+        pedidosHandler.Criar(input);
+    }
 }
