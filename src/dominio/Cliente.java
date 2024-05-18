@@ -5,12 +5,12 @@ public class Cliente {
      private String nome;
      private String cpf;
      private String cep;
-  
-    public Cliente(String nome, String cpf, String cep) {
-     this.nome = nome;
-     this.cpf = cpf;
-     this.cep = cep;
-    }
+
+     public Cliente(String nome, String cpf, String cep) {
+          this.nome = nome;
+          this.cpf = cpf;
+          this.cep = cep;
+     }
 
      public String nome() {
           return this.nome;
@@ -23,6 +23,4 @@ public class Cliente {
      public String cep() {
           return this.cep;    
     }
-
-
 }
