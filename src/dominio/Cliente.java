@@ -22,5 +22,18 @@ public class Cliente {
 
      public String cep() {
           return this.cep;    
-    }
+     }
+
+     public String nome() {
+          return nome;
+     }
+
+     public String cpf() {
+          return cpf;
+     }
+
+     public String cep() {
+          return cep;
+     }
+
 }
