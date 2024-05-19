@@ -21,7 +21,6 @@ public class Cliente {
      }
 
      public String cep() {
-          return this.cep;    
-    }
-     public  
+          return this.cep;
+     }
 }

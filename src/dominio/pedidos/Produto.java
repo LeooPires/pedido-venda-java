@@ -1,10 +1,10 @@
 package dominio.pedidos;
 
-public class ItemDoPedido {
+public class Produto {
     private String descricao;
     private Number preco;
 
-    public ItemDoPedido(String descricao, Number preco) {
+    public Produto(String descricao, Number preco) {
         this.descricao = descricao;
         this.preco = preco;
     }
@@ -24,5 +24,4 @@ public class ItemDoPedido {
     public void preco(Number value) {
         this.preco = value;
     }
-
 }
