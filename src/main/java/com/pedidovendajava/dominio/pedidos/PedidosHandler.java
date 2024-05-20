@@ -1,17 +1,12 @@
-package dominio.pedidos;
+package main.java.com.pedidovendajava.dominio.pedidos;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import dominio.Produto;
-import dominio.Vendedor;
-import dominio.comum.Erro;
-import dominio.pedidos.models.Item;
-import dominio.pedidos.models.ItemDimensao;
-import dominio.pedidos.models.ItemPeso;
-import dominio.pedidos.models.ItemUnitario;
-import dominio.pedidos.models.Pedido;
+import main.java.com.pedidovendajava.dominio.Erro;
+import main.java.com.pedidovendajava.dominio.Produto;
+import main.java.com.pedidovendajava.dominio.Vendedor;
 
 public class PedidosHandler {
     private IPedidosRepository pedidosRepository;
@@ -21,7 +16,7 @@ public class PedidosHandler {
     }
 
     public Optional<Erro> Criar(PedidoInput input) {
-        Optional<Vendedor> vendedor = this.pedidosRepository.BuscarVendedor(input.vendedorId);
+        Optional<Vendedor> vendedor = this.pedidosRepository.buscarVendedor(input.vendedorId);
         if (vendedor.isEmpty())
             return Optional.of(new Erro("vendedor_nao_encontrado", "Vendedor não encontrado."));
 
@@ -43,11 +38,14 @@ public class PedidosHandler {
         itens.add(dimensao);
 
         Pedido pedido = new Pedido(itens, input.clienteId, input.vendedorId, input.formaDepagamentoId);
-
         Double precoTotal = pedido.precoTotal();
 
-        pedidosRepository.Criar(pedido);
+        pedidosRepository.inserir(pedido);
 
         return Optional.empty();
+    }
+
+    public List<Pedido> BuscarTodos() {
+        return this.pedidosRepository.buscarTodos();
     }
 }

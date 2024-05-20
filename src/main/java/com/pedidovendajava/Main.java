@@ -1,19 +1,16 @@
+package main.java.com.pedidovendajava;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import dominio.pedidos.PedidoInput;
-import dominio.pedidos.PedidosHandler;
-import infraestrutura.pedidos.PedidosRepository;
+import main.java.com.pedidovendajava.dominio.pedidos.Pedido;
+import main.java.com.pedidovendajava.dominio.pedidos.PedidoInput;
+import main.java.com.pedidovendajava.dominio.pedidos.PedidosHandler;
+import main.java.com.pedidovendajava.infraestrutura.pedidos.PedidosRepository;
 
-public class App {
+public class Main {
     public static void main(String[] args) throws Exception {
-
-        // PedidosRepository pedidosRepository = new PedidosRepository();
-        // PedidoInput input = new PedidoInput();
-        // PedidosHandler pedidosHandler = new PedidosHandler(pedidosRepository);
-        // pedidosHandler.Criar(input);
-
-        App app = new App();
+        Main app = new Main();
         app.displayMenu();
     }
 
@@ -21,25 +18,27 @@ public class App {
         int option = 0;
         String etc = "";
         while (true) {
-            System.out.printf("\n");
-            System.out.printf("\n");
-            System.out.printf("\n");
-            System.out.printf("\n");
-            System.out.printf("\n");
-            System.out.printf("\n");
-            System.out.printf("\n");
+
+            for (int i = 0; i < 50; i++) {
+                System.out.println("\n");
+            }
+
             System.out.printf("*************************************************************\n", etc);
             System.out.printf("*                                                           *\n", etc, etc);
             System.out.printf("*  Sistema Pedidos de Vendas                         1.0.0  *\n", etc);
             System.out.printf("*                                                           *\n", etc, etc);
             System.out.printf("*************************************************************\n", etc);
             System.out.printf("*  1. Incluir Pedido                                        *\n", etc, etc);
+            System.out.printf("*  2. Listar Pedidos                                        *\n", etc, etc);
             System.out.printf("*  7. Sair                                                  *\n", etc, etc);
             System.out.printf("*  Escolha opção 1-7 : ", etc);
             option = this.getIntValue("!! Escolha opção ", 1, 7, 1);
             switch (option) {
                 case 1:
                     this.incluirPedido();
+                    break;
+                case 2:
+                    this.listarPedidos();
                     break;
 
                 default:
@@ -49,12 +48,35 @@ public class App {
     }
 
     public void incluirPedido() {
+
+        PedidosRepository pedidosRepository = new PedidosRepository();
+        PedidoInput input = new PedidoInput();
+        PedidosHandler pedidosHandler = new PedidosHandler(pedidosRepository);
+        pedidosHandler.Criar(input);
+
         String etc = "";
         System.out.printf("*************************************************************\n", etc);
         System.out.printf("*                                                           *\n", etc, etc);
         System.out.printf("*  Incluir Pedido                                           *\n", etc, etc);
         System.out.printf("*                                                           *\n", etc, etc);
         System.out.printf("*************************************************************\n", etc);
+        this.waitForKeyPress();
+    }
+
+    public void listarPedidos() {
+        String etc = "";
+        System.out.printf("*************************************************************\n", etc);
+        System.out.printf("*                                                           *\n", etc, etc);
+        System.out.printf("*  Listagem de Pedidos                                      *\n", etc, etc);
+        System.out.printf("*                                                           *\n", etc, etc);
+        System.out.printf("*************************************************************\n", etc);
+
+        PedidosRepository pedidosRepository = new PedidosRepository();
+
+        for (Pedido pedido : pedidosRepository.buscarTodos()) {
+            System.out.printf(pedido.precoTotal().toString() + "\n" + "\n", etc);
+        }
+
         this.waitForKeyPress();
     }
 

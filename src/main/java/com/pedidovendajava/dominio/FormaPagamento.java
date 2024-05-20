@@ -1,11 +1,11 @@
-package dominio;
+package main.java.com.pedidovendajava.dominio;
 
-public class FormaPagamento{
+public class FormaPagamento {
     private Number id;
     private String descricao;
 
     public FormaPagamento(String descricao) {
-        this.descricao = descricao; 
+        this.descricao = descricao;
     }
 
     public Number id() {

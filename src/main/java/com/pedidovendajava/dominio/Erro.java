@@ -1,4 +1,4 @@
-package dominio.comum;
+package main.java.com.pedidovendajava.dominio;
 
 public class Erro {
   String codigo;

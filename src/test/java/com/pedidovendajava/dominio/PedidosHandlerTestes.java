@@ -1,4 +1,4 @@
-package test;
+package test.java.com.pedidovendajava.dominio;
 
 import java.util.Optional;
 
@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import dominio.pedidos.PedidoInput;
-import dominio.pedidos.PedidosHandler;
+import main.java.com.pedidovendajava.dominio.pedidos.PedidoInput;
+import main.java.com.pedidovendajava.dominio.pedidos.PedidosHandler;
 
 public class PedidosHandlerTestes {
   PedidosHandler handler;

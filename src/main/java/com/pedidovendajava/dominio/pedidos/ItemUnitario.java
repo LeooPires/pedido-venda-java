@@ -1,6 +1,6 @@
-package dominio.pedidos.models;
+package main.java.com.pedidovendajava.dominio.pedidos;
 
-import dominio.Produto;
+import main.java.com.pedidovendajava.dominio.Produto;
 
 public class ItemUnitario extends Item {
   Integer quantidade;
