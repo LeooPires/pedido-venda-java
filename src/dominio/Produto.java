@@ -1,10 +1,10 @@
-package dominio.pedidos;
+package dominio;
 
 public class Produto {
     private String descricao;
-    private Number preco;
+    private Double preco;
 
-    public Produto(String descricao, Number preco) {
+    public Produto(String descricao, Double preco) {
         this.descricao = descricao;
         this.preco = preco;
     }
@@ -13,7 +13,7 @@ public class Produto {
         return this.descricao;
     }
 
-    public Number preco() {
+    public Double preco() {
         return this.preco;
     }
 
@@ -21,7 +21,7 @@ public class Produto {
         this.descricao = value;
     }
 
-    public void preco(Number value) {
+    public void preco(Double value) {
         this.preco = value;
     }
 }

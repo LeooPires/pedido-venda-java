@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import dominio.Vendedor;
 import dominio.pedidos.IPedidosRepository;
-import dominio.pedidos.Pedido;
+import dominio.pedidos.models.Pedido;
 
 public class PedidosRepository implements IPedidosRepository {
 
