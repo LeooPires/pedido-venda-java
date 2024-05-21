@@ -1,4 +1,4 @@
-package main.java.com.pedidovendajava.dominio;
+package dominio;
 
 public class Produto {
     private String descricao;

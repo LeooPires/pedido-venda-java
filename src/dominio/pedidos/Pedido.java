@@ -1,4 +1,4 @@
-package main.java.com.pedidovendajava.dominio.pedidos;
+package dominio.pedidos;
 
 import java.util.ArrayList;
 import java.util.List;

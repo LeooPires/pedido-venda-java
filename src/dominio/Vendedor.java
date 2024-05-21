@@ -1,4 +1,4 @@
-package main.java.com.pedidovendajava.dominio;
+package dominio;
 
 public class Vendedor {
     private Number id;

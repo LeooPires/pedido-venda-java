@@ -1,12 +1,12 @@
-package main.java.com.pedidovendajava.dominio.pedidos;
+package dominio.pedidos;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import main.java.com.pedidovendajava.dominio.Erro;
-import main.java.com.pedidovendajava.dominio.Produto;
-import main.java.com.pedidovendajava.dominio.Vendedor;
+import dominio.Erro;
+import dominio.Produto;
+import dominio.Vendedor;
 
 public class PedidosHandler {
     private IPedidosRepository pedidosRepository;

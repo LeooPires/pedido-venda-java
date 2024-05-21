@@ -1,9 +1,9 @@
-package main.java.com.pedidovendajava.dominio.pedidos;
+package dominio.pedidos;
 
 import java.util.List;
 import java.util.Optional;
 
-import main.java.com.pedidovendajava.dominio.Vendedor;
+import dominio.Vendedor;
 
 public interface IPedidosRepository {
   void inserir(Pedido pedido);

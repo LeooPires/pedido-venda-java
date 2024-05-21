@@ -1,6 +1,6 @@
-package main.java.com.pedidovendajava.dominio.pedidos;
+package dominio.pedidos;
 
-import main.java.com.pedidovendajava.dominio.Produto;
+import dominio.Produto;
 
 public class ItemDimensao extends Item {
   Integer quantidade;

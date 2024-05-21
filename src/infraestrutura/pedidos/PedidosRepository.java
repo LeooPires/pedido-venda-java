@@ -1,17 +1,17 @@
-package main.java.com.pedidovendajava.infraestrutura.pedidos;
+package infraestrutura.pedidos;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import main.java.com.pedidovendajava.dominio.Produto;
-import main.java.com.pedidovendajava.dominio.Vendedor;
-import main.java.com.pedidovendajava.dominio.pedidos.IPedidosRepository;
-import main.java.com.pedidovendajava.dominio.pedidos.Item;
-import main.java.com.pedidovendajava.dominio.pedidos.ItemDimensao;
-import main.java.com.pedidovendajava.dominio.pedidos.ItemPeso;
-import main.java.com.pedidovendajava.dominio.pedidos.ItemUnitario;
-import main.java.com.pedidovendajava.dominio.pedidos.Pedido;
+import dominio.Produto;
+import dominio.Vendedor;
+import dominio.pedidos.IPedidosRepository;
+import dominio.pedidos.Item;
+import dominio.pedidos.ItemDimensao;
+import dominio.pedidos.ItemPeso;
+import dominio.pedidos.ItemUnitario;
+import dominio.pedidos.Pedido;
 
 public class PedidosRepository implements IPedidosRepository {
 

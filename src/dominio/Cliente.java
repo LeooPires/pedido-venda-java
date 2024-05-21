@@ -1,7 +1,6 @@
-package main.java.com.pedidovendajava.dominio;
+package dominio;
 
 public class Cliente {
-
      private String nome;
      private String cpf;
      private String cep;

@@ -1,16 +1,14 @@
-package main.java.com.pedidovendajava;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import main.java.com.pedidovendajava.dominio.pedidos.Pedido;
-import main.java.com.pedidovendajava.dominio.pedidos.PedidoInput;
-import main.java.com.pedidovendajava.dominio.pedidos.PedidosHandler;
-import main.java.com.pedidovendajava.infraestrutura.pedidos.PedidosRepository;
+import dominio.pedidos.Pedido;
+import dominio.pedidos.PedidoInput;
+import dominio.pedidos.PedidosHandler;
+import infraestrutura.pedidos.PedidosRepository;
 
-public class Main {
+public class App {
     public static void main(String[] args) throws Exception {
-        Main app = new Main();
+        App app = new App();
         app.displayMenu();
     }
 
@@ -126,3 +124,11 @@ public class Main {
     public static Scanner s = new Scanner(System.in);
     public static Scanner s1;
 }
+
+
+
+// public class App {
+//     public static void main(String[] args) throws Exception {
+//         System.out.println("Hello, World!");
+//     }
+// }
