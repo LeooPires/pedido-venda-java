@@ -1,7 +1,3 @@
-package dominio.pedidos;
-
-import dominio.Produto;
-
 public class ItemDimensao extends Item {
   Integer quantidade;
   Double altura;
@@ -15,9 +11,9 @@ public class ItemDimensao extends Item {
   }
 
   @Override
-  Double preco() {
+  Double precoTotal() {
     Double area = altura * largura;
-    return area * this.quantidade * this.produto.preco();
+    return area * this.quantidade * this.produto.getPreco();
   }
 
 }

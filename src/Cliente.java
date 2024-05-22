@@ -1,4 +1,3 @@
-package dominio;
 
 public class Cliente {
      private String nome;

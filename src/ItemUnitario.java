@@ -1,7 +1,3 @@
-package dominio.pedidos;
-
-import dominio.Produto;
-
 public class ItemUnitario extends Item {
   Integer quantidade;
 
@@ -11,7 +7,7 @@ public class ItemUnitario extends Item {
   }
 
   @Override
-  Double preco() {
-    return this.quantidade * this.produto.preco();
+  Double precoTotal() {
+    return this.quantidade * this.produto.getPreco();
   }
 }

@@ -1,4 +1,4 @@
-package dominio;
+
 
 public class Produto {
     private String descricao;
@@ -9,19 +9,19 @@ public class Produto {
         this.preco = preco;
     }
 
-    public String descricao() {
+    public String getDescricao() {
         return this.descricao;
     }
 
-    public Double preco() {
-        return this.preco;
-    }
-
-    public void descricao(String value) {
+    public void setDescricao(String value) {
         this.descricao = value;
     }
 
-    public void preco(Double value) {
+    public Double getPreco() {
+        return this.preco;
+    }
+
+    public void setPreco(Double value) {
         this.preco = value;
     }
 }

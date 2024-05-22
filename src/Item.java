@@ -1,7 +1,3 @@
-package dominio.pedidos;
-
-import dominio.Produto;
-
 public abstract class Item {
   public Produto produto;
 
@@ -9,5 +5,5 @@ public abstract class Item {
     this.produto = produto;
   }
 
-  abstract Double preco();
+  abstract Double precoTotal();
 }

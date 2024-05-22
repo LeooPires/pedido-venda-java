@@ -1,7 +1,3 @@
-package dominio.pedidos;
-
-import dominio.Produto;
-
 public class ItemPeso extends Item {
   Double peso;
 
@@ -11,7 +7,7 @@ public class ItemPeso extends Item {
   }
 
   @Override
-  Double preco() {
-    return this.peso * produto.preco();
+  Double precoTotal() {
+    return this.peso * produto.getPreco();
   }
 }
