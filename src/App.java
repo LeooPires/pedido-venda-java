@@ -1,134 +1,198 @@
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
-import dominio.pedidos.Pedido;
-import dominio.pedidos.PedidoInput;
-import dominio.pedidos.PedidosHandler;
-import infraestrutura.pedidos.PedidosRepository;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
+
+    // Instância lista de pedidos
+    List<Pedido> pedidos = new ArrayList<Pedido>();
+    List<Produto> produtos = new ArrayList<Produto>();
+    List<Vendedor> vendedores = new ArrayList<Vendedor>();
+    List<Cliente> clientes = new ArrayList<Cliente>();
+    List<FormaPagamento> formasPagamento = new ArrayList<FormaPagamento>();
+
+    // Instância produtos
+    Produto cimento = new Produto("Cimento", 4.97);
+    Produto telha = new Produto("Telha de brasilit", 18.00);
+    Produto tijolo = new Produto("Tijolo baiano", 0.90);
+
+    // Instância clientes
+    Cliente clienteGabriel = new Cliente("Gabriel", "123456789009", "Rua Paulo Evaristo", 123, "Bairro Palmeiras", "12345-678");
+    Cliente clienteEmpresaBrasil = new Cliente("Empresa Brasil", "Empresa Brasil S.A", "12.345.678/9123-45", "Rua Paulo Evaristo", 123, "Bairro Palmeiras", "12345-678");
+
+    // Instância vendedores
+    Vendedor vendedorLeonardo = new Vendedor("Leonardo");
+    Vendedor vendedorPedro = new Vendedor("Pedro");
+
+    // Instância formas de pagamento
+    FormaPagamento formaPagamentoAvista = new FormaPagamento("A vista");
+    FormaPagamento formaPagamentoBoleto = new FormaPagamento("Boleto");
+
     public static void main(String[] args) throws Exception {
+        // Instância a apliação
         App app = new App();
-        app.displayMenu();
+
+        // Chama as operações
+        app.imprimirProdutos();
+        app.imprimirVendedores();
+        app.imprimirClientes();
+        app.imprimirFormaPagamento();
+        app.criarPedidoClienteGabriel();
+        app.criarPedidoClienteEmpresaBrasil();
+        app.imprimirPedidos();
     }
 
-    public void displayMenu() {
-        int option = 0;
-        String etc = "";
-        while (true) {
+    // Função da aplicação de criar pedido para cliente Gabriel
+    public void criarPedidoClienteGabriel(){
+        // Instância item pedidos
+        PedidoItem itemTijolo = new PedidoItemUnitario(3000, tijolo);
+        PedidoItem itemCimentoPeso = new PedidoItemPeso(260.50, cimento);
+        PedidoItem itemDimensao = new PedidoItemDimensao(2.10, 1.60, 300, telha);
 
-            for (int i = 0; i < 50; i++) {
-                System.out.println("\n");
-            }
+        // Adicione item pedidos em uma lista
+        List<PedidoItem> itens = new ArrayList<PedidoItem>();
+        itens.add(itemTijolo);
+        itens.add(itemCimentoPeso);
+        itens.add(itemDimensao);
 
-            System.out.printf("*************************************************************\n", etc);
-            System.out.printf("*                                                           *\n", etc, etc);
-            System.out.printf("*  Sistema Pedidos de Vendas                         1.0.0  *\n", etc);
-            System.out.printf("*                                                           *\n", etc, etc);
-            System.out.printf("*************************************************************\n", etc);
-            System.out.printf("*  1. Incluir Pedido                                        *\n", etc, etc);
-            System.out.printf("*  2. Listar Pedidos                                        *\n", etc, etc);
-            System.out.printf("*  7. Sair                                                  *\n", etc, etc);
-            System.out.printf("*  Escolha opção 1-7 : ", etc);
-            option = this.getIntValue("!! Escolha opção ", 1, 7, 1);
-            switch (option) {
-                case 1:
-                    this.incluirPedido();
-                    break;
-                case 2:
-                    this.listarPedidos();
-                    break;
+        // Instância pedido
+        Pedido pedido = new Pedido(itens, clienteGabriel, vendedorLeonardo, formaPagamentoAvista);
+        this.pedidos.add(pedido);
+    }
 
-                default:
-                    break;
-            }
+    // Função da aplicação de criar pedido para cliente Empresa Brasil
+    public void criarPedidoClienteEmpresaBrasil(){
+        // Instância item pedidos
+        PedidoItem itemTijolo = new PedidoItemUnitario(1200, tijolo);
+        PedidoItem itemCimentoPeso = new PedidoItemPeso(160.50, cimento);
+        PedidoItem itemDimensao = new PedidoItemDimensao(2.10, 1.60, 300, telha);
+
+        // Adicione item pedidos em uma lista
+        List<PedidoItem> itens = new ArrayList<PedidoItem>();
+        itens.add(itemTijolo);
+        itens.add(itemCimentoPeso);
+        itens.add(itemDimensao);
+
+        // Instância pedido
+        Pedido pedido = new Pedido(itens, clienteEmpresaBrasil, vendedorPedro, formaPagamentoBoleto);
+        this.pedidos.add(pedido);
+    }
+
+    // Função da aplicação para imprimir os produtos
+    public void imprimirProdutos() {
+        this.produtos.add(cimento);
+        this.produtos.add(telha);
+        this.produtos.add(tijolo);
+        System.out.printf("*************************************************************\n");
+        System.out.printf("*  Produtos                                                 *\n");
+        System.out.printf("*************************************************************\n");
+        for (Produto produto : this.produtos) {
+            System.out.println("Produto: " + produto.getDescricao());
+            System.out.println("Preço: " + produto.getPreco());
+            System.out.println("");
         }
+        System.out.println("\n");
+        System.out.println("\n");
     }
 
-    public void incluirPedido() {
-
-        PedidosRepository pedidosRepository = new PedidosRepository();
-        PedidoInput input = new PedidoInput();
-        PedidosHandler pedidosHandler = new PedidosHandler(pedidosRepository);
-        pedidosHandler.Criar(input);
-
-        String etc = "";
-        System.out.printf("*************************************************************\n", etc);
-        System.out.printf("*                                                           *\n", etc, etc);
-        System.out.printf("*  Incluir Pedido                                           *\n", etc, etc);
-        System.out.printf("*                                                           *\n", etc, etc);
-        System.out.printf("*************************************************************\n", etc);
-        this.waitForKeyPress();
-    }
-
-    public void listarPedidos() {
-        String etc = "";
-        System.out.printf("*************************************************************\n", etc);
-        System.out.printf("*                                                           *\n", etc, etc);
-        System.out.printf("*  Listagem de Pedidos                                      *\n", etc, etc);
-        System.out.printf("*                                                           *\n", etc, etc);
-        System.out.printf("*************************************************************\n", etc);
-
-        PedidosRepository pedidosRepository = new PedidosRepository();
-
-        for (Pedido pedido : pedidosRepository.buscarTodos()) {
-            System.out.printf(pedido.precoTotal().toString() + "\n" + "\n", etc);
+    // Função da aplicação para imprimir os vendedores
+    public void imprimirVendedores() {
+        vendedores.add(vendedorLeonardo);
+        vendedores.add(vendedorPedro);
+        System.out.printf("*************************************************************\n");
+        System.out.printf("*  Vendedores                                               *\n");
+        System.out.printf("*************************************************************\n");
+        for (Vendedor vendedor : vendedores) {
+            System.out.println("Vendedor: " + vendedor.getNome());
         }
-
-        this.waitForKeyPress();
+        System.out.println("\n");
+        System.out.println("\n");
+    }
+    
+    // Função da aplicação para imprimir os clientes
+    public void imprimirClientes() {
+        clientes.add(clienteGabriel);
+        clientes.add(clienteEmpresaBrasil);
+        System.out.printf("*************************************************************\n");
+        System.out.printf("*  Clientes                                                 *\n");
+        System.out.printf("*************************************************************\n");
+        for (Cliente cliente : clientes) {
+            System.out.println("Cliente: " + cliente.getNome());
+            if (cliente.getTipo() == ClienteTipo.Fisica) {
+                System.out.println("  CPF: " + cliente.getCpf());
+            } else if (cliente.getTipo() == ClienteTipo.Juridica) {
+                System.out.println("  Razão Social: " + cliente.getRazaoSocial());
+                System.out.println("  CNPJ: " + cliente.getCnpj());
+            }
+            System.out.println("  Endereço: " + cliente.getEndereco().getRua());
+            System.out.println("  Numero: " + cliente.getEndereco().getNumero());
+            System.out.println("  Bairro: " + cliente.getEndereco().getBairro());
+            System.out.println("  CEP: " + cliente.getCep());
+        }
+        System.out.println("\n");
+        System.out.println("\n");
+    }
+    
+    // Função da aplicação para imprimir as formas de pagamento
+    public void imprimirFormaPagamento() {
+        formasPagamento.add(formaPagamentoAvista);
+        formasPagamento.add(formaPagamentoBoleto);
+        System.out.printf("*************************************************************\n");
+        System.out.printf("*  Formas de Pagamento                                      *\n");
+        System.out.printf("*************************************************************\n");
+        for (FormaPagamento formaPagamento : formasPagamento) {
+            System.out.println("Forma de Pagamento: " + formaPagamento.getDescricao());
+        }
+        System.out.println("\n");
+        System.out.println("\n");
     }
 
-    private void waitForKeyPress() {
-        String etc = "";
-        System.out.printf("Pressione Enter para continuar :", etc, etc, etc);
-        s.nextLine();
-    }
+    // Função da aplicação para imprimir os pedidos
+    public void imprimirPedidos() {
+        System.out.printf("*************************************************************\n");
+        System.out.printf("*  Pedidos                                                  *\n");
+        System.out.printf("*************************************************************\n");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Integer i = 1;
+        for (Pedido pedido : this.pedidos) {
+            String dataFormatada = dateFormat.format(pedido.getData());
 
-    private int getIntValue(String error, int low, int high, int fs) {
-        int option;
-        while (true) {
-            String etc = "";
-            try {
-                String temp = "";
-                while (temp.equals("")) {
-                    temp = s.nextLine();
-                    if (temp.equals("")) {
-                        String n = "%" + fs + "s*%6s%s %d to %d :";
-                        System.out.printf(n, etc, etc, error, low, high);
-                    }
+            System.out.println("Pedido n°: " + i);
+            System.out.println("Data do Pedido: " + dataFormatada);
+            if (pedido.getCliente().getTipo() == ClienteTipo.Fisica) {
+                System.out.println("Cliente Pessoa Fisica: ");
+                System.out.println("  Nome: " + pedido.getCliente().getNome());
+                System.out.println("  CPF: " + pedido.getCliente().getCpf());
+            } else if (pedido.getCliente().getTipo() == ClienteTipo.Juridica) {
+                System.out.println("Cliente Pessoa Jurídica: ");
+                System.out.println("  Nome: " + pedido.getCliente().getNome());
+                System.out.println("  Razão Social: " + pedido.getCliente().getRazaoSocial());
+                System.out.println("  CNPJ: " + pedido.getCliente().getCnpj());
+            }
+            System.out.println("Vendedor: " + pedido.getVendedor().getNome());
+            System.out.println("Forma de Pagamento: " + pedido.getFormaPagamento().getDescricao());
+            System.out.println("Itens:");
+            for (PedidoItem item : pedido.getItens()) {
+                System.out.println("- Produto: " + item.getProduto().getDescricao());
+                if (item instanceof PedidoItemDimensao) {
+                    PedidoItemDimensao itemDimensao = (PedidoItemDimensao) item;
+                    System.out.println("  Altura: " + itemDimensao.getAltura() + " m");
+                    System.out.println("  Largura: " + itemDimensao.getLargura() + " m");
+                    System.out.println("  Quantidade: " + itemDimensao.getQuantidade());
+                    System.out.println("  Preço Total: R$" + String.format("%.2f", itemDimensao.precoTotal()));
+                } else if (item instanceof PedidoItemPeso) {
+                    PedidoItemPeso itemPeso = (PedidoItemPeso) item;
+                    System.out.println("  Peso: " + itemPeso.getPeso() + " kg");
+                    System.out.println("  Preço Total: R$" + String.format("%.2f", itemPeso.precoTotal()));
+                } else if (item instanceof PedidoItemUnitario) {
+                    PedidoItemUnitario itemUnitario = (PedidoItemUnitario) item;
+                    System.out.println("  Quantidade: " + itemUnitario.getQuantidade());
+                    System.out.println("  Preço Total: R$" + String.format("%.2f", itemUnitario.precoTotal()));
                 }
-
-                s1 = new Scanner(temp);
-                option = Integer.parseInt(s1.next());
-                s1 = null;
-                if (option < low || option > high) {
-                    String n = "%" + fs + "s*%6s%s no intervalo: %d a %d: ";
-                    System.out.printf(n, etc, etc, error, low, high);
-                    continue;
-                }
-                return option;
-
-            } catch (InputMismatchException e) {
-                String n = "%" + fs + "s*%6s%s em formato numérico";
-                System.out.printf(n, etc, etc, error);
-                option = 0;
-            } catch (NumberFormatException e) {
-                String n = "%" + fs + "s*%6s%s em formato inteiro/número: ";
-                System.out.printf(n, etc, etc, error);
-                option = 0;
             }
+            System.out.println("Preço Total do Pedido: R$" + String.format("%.2f", pedido.precoTotal()));
+            System.out.println("");
+            i++;
         }
-
     }
-
-    public static Scanner s = new Scanner(System.in);
-    public static Scanner s1;
 }
-
-
-
-// public class App {
-//     public static void main(String[] args) throws Exception {
-//         System.out.println("Hello, World!");
-//     }
-// }
