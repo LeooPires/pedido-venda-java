@@ -7,7 +7,17 @@ public class PedidoItemUnitario extends PedidoItem {
   }
 
   @Override
-  Double precoTotal() {
+  public Double precoTotal() {
     return this.quantidade * this.produto.getPreco();
   }
+
+  public Integer getQuantidade() {
+    return this.quantidade;
+  }
+
+  public void setQuantidade(Integer quantidade) {
+    this.quantidade = quantidade;
+  }
+
+  
 }

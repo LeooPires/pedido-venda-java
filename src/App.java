@@ -176,17 +176,19 @@ public class App {
                 System.out.println("- Produto: " + item.getProduto().getDescricao());
                 if (item instanceof PedidoItemDimensao) {
                     PedidoItemDimensao itemDimensao = (PedidoItemDimensao) item;
-                    System.out.println("  Altura: " + itemDimensao.altura + " m");
-                    System.out.println("  Largura: " + itemDimensao.largura + " m");
-                    System.out.println("  Quantidade: " + itemDimensao.quantidade);
+                    System.out.println("  Altura: " + itemDimensao.getAltura() + " m");
+                    System.out.println("  Largura: " + itemDimensao.getLargura() + " m");
+                    System.out.println("  Quantidade: " + itemDimensao.getQuantidade());
+                    System.out.println("  Preço Total: R$" + String.format("%.2f", itemDimensao.precoTotal()));
                 } else if (item instanceof PedidoItemPeso) {
                     PedidoItemPeso itemPeso = (PedidoItemPeso) item;
-                    System.out.println("  Peso: " + itemPeso.peso + " kg");
+                    System.out.println("  Peso: " + itemPeso.getPeso() + " kg");
+                    System.out.println("  Preço Total: R$" + String.format("%.2f", itemPeso.precoTotal()));
                 } else if (item instanceof PedidoItemUnitario) {
                     PedidoItemUnitario itemUnitario = (PedidoItemUnitario) item;
-                    System.out.println("  Quantidade: " + itemUnitario.quantidade);
+                    System.out.println("  Quantidade: " + itemUnitario.getQuantidade());
+                    System.out.println("  Preço Total: R$" + String.format("%.2f", itemUnitario.precoTotal()));
                 }
-                System.out.println("  Preço Total: R$" + String.format("%.2f", item.precoTotal()));
             }
             System.out.println("Preço Total do Pedido: R$" + String.format("%.2f", pedido.precoTotal()));
             System.out.println("");

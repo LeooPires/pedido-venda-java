@@ -7,7 +7,17 @@ public class PedidoItemPeso extends PedidoItem {
   }
 
   @Override
-  Double precoTotal() {
+  public Double precoTotal() {
     return this.peso * produto.getPreco();
   }
+
+  public Double getPeso() {
+    return peso;
+  }
+
+  public void setPeso(Double peso) {
+    this.peso = peso;
+  }
+
+  
 }

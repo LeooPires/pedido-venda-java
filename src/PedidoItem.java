@@ -9,7 +9,7 @@ public abstract class PedidoItem {
   }
 
   // Método abstrato
-  abstract Double precoTotal();
+  public abstract Double precoTotal();
 
   // Gets e sets
   public Produto getProduto() {
