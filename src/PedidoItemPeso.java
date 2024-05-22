@@ -1,7 +1,7 @@
-public class ItemPeso extends Item {
+public class PedidoItemPeso extends PedidoItem {
   Double peso;
 
-  public ItemPeso(Double peso, Produto produto) {
+  public PedidoItemPeso(Double peso, Produto produto) {
     super(produto);
     this.peso = peso;
   }

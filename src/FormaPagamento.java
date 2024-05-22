@@ -1,17 +1,18 @@
-
-
 public class FormaPagamento {
+    // Atributos
     private String descricao;
 
+    // Construtor
     public FormaPagamento(String descricao) {
         this.descricao = descricao;
     }
 
-    public String descricao() {
-        return this.descricao;
+    // gets e sets
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void descricao(String value)  {
-        this.descricao = value;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

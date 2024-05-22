@@ -1,7 +1,7 @@
-public class ItemUnitario extends Item {
+public class PedidoItemUnitario extends PedidoItem {
   Integer quantidade;
 
-  public ItemUnitario(Integer quantidade, Produto produto) {
+  public PedidoItemUnitario(Integer quantidade, Produto produto) {
     super(produto);
     this.quantidade = quantidade;
   }

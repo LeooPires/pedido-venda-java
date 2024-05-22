@@ -1,9 +1,9 @@
-public class ItemDimensao extends Item {
+public class PedidoItemDimensao extends PedidoItem {
   Integer quantidade;
   Double altura;
   Double largura;
 
-  public ItemDimensao(Double altura, Double largura, Integer quantidade, Produto produto) {
+  public PedidoItemDimensao(Double altura, Double largura, Integer quantidade, Produto produto) {
     super(produto);
     this.altura = altura;
     this.largura = largura;

@@ -1,17 +1,18 @@
-
-
 public class Vendedor {
+    // Atributos
     private String nome;
 
+    // Construtor
     public Vendedor(String nome) {
         this.nome = nome;
     }
 
-    public String nome() {
-        return this.nome;
+    // Gets e sets
+    public String getNome() {
+        return nome;
     }
 
-    public void nome(String value) {
-        this.nome = value;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
