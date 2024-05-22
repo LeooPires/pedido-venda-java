@@ -28,6 +28,10 @@ public class Pedido {
     return total;
   }
 
+  public void InserirPedidoItem(List<PedidoItem> item) {
+    this.itens.addAll(item);
+  }
+
   public void InserirPedidoItem(PedidoItem item) {
     this.itens.add(item);
   }
